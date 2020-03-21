@@ -5,11 +5,10 @@ import ListItem from './ListItem'
 export default function List({ list }) {
   return (
     <ListStyled>
-      {list
-        .sort((a, b) => Number(a.load) > Number(b.load))
-        .map(item => (
-          <ListItem key={item.id} item={item} />
-        ))}
+      {list.length > 0 &&
+        list
+          .sort((a, b) => Number(a.load) > Number(b.load))
+          .map(item => <ListItem key={item.id} item={item} />)}
     </ListStyled>
   )
 }
