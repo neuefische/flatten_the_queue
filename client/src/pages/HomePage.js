@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getDemo } from '../services'
 import testdata from '../.mockdata/testdata.json'
 import List from '../components/List'
+import styled from 'styled-components/macro'
 
 export default function HomePage() {
   const [expressReady, setExpressReady] = useState(false)
@@ -14,9 +15,15 @@ export default function HomePage() {
   })
 
   return (
-    <main>
+    <Main>
       <h1>Home</h1>
       {expressReady && <List list={testdata} />}
-    </main>
+    </Main>
   )
 }
+
+const Main = styled.main`
+  padding: 0 20px;
+  overflow-y: scroll;
+  background: #fff;
+`

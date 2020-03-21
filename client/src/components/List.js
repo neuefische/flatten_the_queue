@@ -27,7 +27,7 @@ List.propTypes = {
 
 const ListStyled = styled.ul`
   display: grid;
-  grid-gap: 4px;
+  grid-gap: 8px;
   padding: 0;
   width: 100%;
 `
