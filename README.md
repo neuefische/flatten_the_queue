@@ -18,8 +18,8 @@ A project for WirVsVirus
 
 ### Frontend
 - react (create-react-app)
-- styled components
-- react router
+- styled-components
+- react-router
 - axios (fetching library)
 
 ### Backend
