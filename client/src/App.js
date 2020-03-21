@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
 import AboutPage from './pages/AboutPage'
 import HomePage from './pages/HomePage'
-
+import DescriptionPage from './pages/DescriptionPage'
 
 export default function App() {
   return (
@@ -16,6 +16,9 @@ export default function App() {
           </Route>
           <Route path="/about">
             <AboutPage />
+          </Route>
+          <Route path="/description">
+            <DescriptionPage />
           </Route>
         </Switch>
         <Navigation />
