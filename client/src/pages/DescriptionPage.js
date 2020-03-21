@@ -16,31 +16,49 @@ export default function DescriptionPage() {
         Brauerknwachtgraben 47,
         <span className="city">Hamburg 23500</span>
       </Address>
-      <p>
-        Livestatus: weniger Besucher als gewöhnlich
-        <br />
-        In der Regel verbringen Meschen hier: 20 Min.
-      </p>
+
+      <Status>
+        Livestatus: <Visitor>26 Besucher</Visitor>
+        <p>
+          In der Regel verbringen Meschen hier: <Time>20 Minuten</Time>
+        </p>
+      </Status>
 
       <input type="checkbox" id="status" name="status" />
       <label for="status"> Ich befinde mich aktuell in diesem Supermarkt</label>
 
-      <p>Wie ist der aktuelle Status in diesem Markt?</p>
       <p>
-        {date}.{month}.{year} - {hours}:{minutes}
+        Wie ist der aktuelle Stand in diesem Supermarkt?
+        <DateStyled>
+          {date}.{month}.{year} - {hours}:{minutes}
+        </DateStyled>
       </p>
-      <p></p>
 
       <Range />
     </Main>
   )
 }
 
+const Status = styled.div`
+  font-size: 14px;
+`
+const Visitor = styled.span`
+  display: block;
+`
+const Time = styled.span`
+  display: block;
+`
+const DateStyled = styled.span`
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+`
+
 const Main = styled.main`
   padding: 0 20px;
   overflow-y: scroll;
   background: #fff;
-  font-size: 14px;
+  height: 100vh;
 `
 const SubHeader = styled.h1`
   font-size: 1.4rem;
