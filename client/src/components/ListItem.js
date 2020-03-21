@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 
 export default function ListItem({ item }) {
   return (
@@ -16,16 +15,6 @@ export default function ListItem({ item }) {
       </Load>
     </Card>
   )
-}
-
-ListItem.propTypes = {
-  listItem: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    street: PropTypes.string.isRequired,
-    zipcode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    load: PropTypes.number.isRequired,
-  }),
 }
 
 const Card = styled.li`
