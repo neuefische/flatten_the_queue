@@ -23,7 +23,7 @@ const LinkStyled = styled(NavLink)`
   background: gray;
 
   &.active {
-    background: tomato;
+    background: #f77d33;
   }
 `
 
