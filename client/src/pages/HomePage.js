@@ -15,12 +15,9 @@ export default function HomePage() {
 
   return (
     <Main>
-      <>
-        <SubHeader>Supermärkte in der Nähe ...</SubHeader>
-        <Search handleChange={handleChange} />
-        <List list={list} />
-      </>
-      )
+      <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+      <Search handleChange={handleChange} />
+      <List list={list} />
     </Main>
   )
   function handleChange() {}
