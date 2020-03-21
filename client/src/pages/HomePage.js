@@ -1,32 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { getNearbyMarkets } from '../services'
-import List from '../components/List'
+import { Link } from 'react-router-dom'
 import Search from '../components/Search'
 import styled from 'styled-components/macro'
-import { getMarketsByZipCode } from '../common/utils'
 
-export default function HomePage() {
-  const [list, setList] = useState([])
-  // testing the server
-  useEffect(() => {
-    getNearbyMarkets('Hamburg')
-      .then(res => setList(res.data))
-      .catch(res => console.error(res))
-  }, [])
-
+export default function HomePage({ handleChange }) {
   return (
     <Main>
-      <>
-        <SubHeader>Supermärkte in der Nähe ...</SubHeader>
-        <Search handleChange={handleChange} />
-        <List list={list} />
-      </>
+      <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+      <Search handleChange={handleChange} />
+      <Link to="/result">Result</Link>
     </Main>
   )
-  function handleChange(filter) {
-    const filteredMarkets = getMarketsByZipCode(filter, list)
-    filteredMarkets !== -1 ? setList(filteredMarkets) : setList(list)
-  }
 }
 
 const Main = styled.main`
