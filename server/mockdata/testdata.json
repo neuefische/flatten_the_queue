@@ -4,69 +4,79 @@
     "street": "Musterstraße 4",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "50"
+    "load": "50",
+    "id": "1f742f9a-430f-46da-ad30-2fc486b13ff8"
   },
   {
     "name": "Tante Emma",
     "street": "Hauptstraße 20",
     "zipcode": "54321",
     "city": "Wurststadt",
-    "load": "10"
+    "load": "10",
+    "id": "0c45eccb-c399-42e9-ba09-537574fe07ac"
   },
   {
     "name": "Kaufwunder",
     "street": "Musterstraße 4",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "50"
+    "load": "50",
+    "id": "2b0f2e25-b0a6-4b9b-b50f-10f2509ec4c8"
   },
   {
     "name": "REWE City",
     "street": "Mannstraße 37",
     "zipcode": "54321",
     "city": "Wursttadt",
-    "load": "60"
+    "load": "60",
+    "id": "b0b681d1-37c1-4f78-9b62-9c189b5a4992"
   },
   {
     "name": "Kaufland",
     "street": "Musterstraße 4",
     "zipcode": "34345",
     "city": "Teehausen",
-    "load": "64"
+    "load": "64",
+    "id": "0c870d70-2958-4377-9b5a-7aee71c835ff"
   },
   {
     "name": "Kaufladen",
     "street": "Landstraße 149",
     "zipcode": "34345",
     "city": "Teehausen",
-    "load": "70"
+    "load": "70",
+    "id": "cef83795-5508-42be-a303-602fda1daf4f"
   },
   {
     "name": "Essen und Trinken",
     "street": "Marktstraße 46",
     "zipcode": "54321",
     "city": "Wurststadt",
-    "load": "10"
+    "load": "10",
+    "id": "d115ff05-f4c8-4438-a3ea-7b182b876d1b"
   },
   {
     "name": "Alles mit Brow",
     "street": "Theodor-Hans-Platz 7",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "5"
+    "load": "5",
+    "id": "22d696f1-03e9-406d-9544-7dacfd935fef"
   },
   {
     "name": "REWE City",
     "street": "Mannstraße 37",
     "zipcode": "34345",
     "city": "Teehausen",
-    "load": "60"
+    "load": "60",
+    "id": "cfd2abbb-b713-4f2e-8dd3-fcb38ee5ffd0"
   },
   {
     "name": "EDEKA Westermann",
     "street": "Musterstraße 88",
     "zipcode": "34345",
     "city": "Teehausen",
-    "load": "54"
+    "load": "54",
+    "id": "c0e7b36a-1819-457f-a2a8-47c8f9e7e8fa"
   }
 ]
