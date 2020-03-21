@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import mongoose from 'mongoose'
+
 const server = express()
 
 const { DB_URL, PORT = 3333 } = process.env
@@ -19,4 +20,6 @@ server.use(cors())
 server.set('json spaces', 2)
 
 import demoRoute from './routes/demo'
+import userRoute from './routes/user'
 server.use('/demo', demoRoute)
+server.use('/user', userRoute)
