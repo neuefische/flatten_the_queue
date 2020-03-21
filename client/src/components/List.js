@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import PropTypes from 'prop-types'
 import ListItem from './ListItem'
 
 export default function List({ list }) {
@@ -9,22 +8,10 @@ export default function List({ list }) {
       {list
         .sort((a, b) => Number(a.load) > Number(b.load))
         .map(item => (
-          <ListItem item={item} />
+          <ListItem key={item.id} item={item} />
         ))}
     </ListStyled>
   )
-}
-
-List.propTypes = {
-  list: PropTypes.shape([
-    {
-      name: PropTypes.string.isRequired,
-      street: PropTypes.string.isRequired,
-      zipcode: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      load: PropTypes.number.isRequired,
-    },
-  ]),
 }
 
 const ListStyled = styled.ul`
