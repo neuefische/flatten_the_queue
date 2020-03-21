@@ -2,8 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
-import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
+import HomePage from './pages/HomePage'
+
 
 export default function App() {
   return (

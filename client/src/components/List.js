@@ -8,7 +8,7 @@ export default function List({ list }) {
       {list
         .sort((a, b) => Number(a.load) > Number(b.load))
         .map(item => (
-          <ListItem item={item} />
+          <ListItem key={item.id} item={item} />
         ))}
     </ListStyled>
   )
