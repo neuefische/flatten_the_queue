@@ -11,7 +11,7 @@ export default function HomePage() {
   useEffect(() => {
     getNearbyMarkets('Hamburg')
       .then(res => setList(res.data))
-      .catch(res => console.log(res))
+      .catch(res => console.error(res))
   }, [])
 
   return (
