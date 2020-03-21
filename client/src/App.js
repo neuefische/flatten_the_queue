@@ -8,7 +8,6 @@ import testData from './common/testdata.json'
 import { getMarketsByZipCode } from './common/utils'
 
 export default function App() {
-  console.log(getMarketsByZipCode(12345, testData))
   return (
     <Router>
       <AppGrid>
