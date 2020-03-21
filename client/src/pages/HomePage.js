@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getDemo } from '../services'
 import testdata from '../.mockdata/testdata.json'
 import List from '../components/List'
+import Search from '../components/Search'
 import styled from 'styled-components/macro'
 
 export default function HomePage() {
@@ -16,8 +17,13 @@ export default function HomePage() {
 
   return (
     <Main>
-      <h1>Home</h1>
-      {expressReady && <List list={testdata} />}
+      {expressReady && (
+        <>
+          <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+          <Search />
+          <List list={testdata} />
+        </>
+      )}
     </Main>
   )
 }
@@ -26,4 +32,8 @@ const Main = styled.main`
   padding: 0 20px;
   overflow-y: scroll;
   background: #fff;
+`
+
+const SubHeader = styled.h2`
+  font-size: 1.4rem;
 `
