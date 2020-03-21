@@ -1,9 +1,7 @@
 export function getMarketsByZipCode(zipcode, markets) {
-  if (zipcode.toString().length !== 5 || !markets) {
+  if (zipcode.length !== 5) {
     return -1
   }
-  const filteredMarkets = markets.filter(
-    market => market.zipcode === zipcode.toString()
-  )
+  const filteredMarkets = markets.filter(market => market.zipcode === zipcode)
   return filteredMarkets
 }

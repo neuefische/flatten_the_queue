@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { getNearbyMarkets } from '../services'
-import List from '../components/List'
+import { Link } from 'react-router-dom'
 import Search from '../components/Search'
 import styled from 'styled-components/macro'
 
-export default function HomePage() {
-  const [list, setList] = useState([])
-  // testing the server
-  useEffect(() => {
-    getNearbyMarkets('Hamburg')
-      .then(res => setList(res.data))
-      .catch(res => console.log(res))
-  }, [])
-
+export default function HomePage({ handleChange }) {
   return (
     <Main>
       <SubHeader>Supermärkte in der Nähe ...</SubHeader>
       <Search handleChange={handleChange} />
-      <List list={list} />
+      <Link to="/result">Result</Link>
     </Main>
   )
-  function handleChange() {}
 }
 
 const Main = styled.main`
