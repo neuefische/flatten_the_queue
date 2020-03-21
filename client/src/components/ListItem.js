@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 
 export default function ListItem({ item }) {
   return (
-    <ListItemCard>
+    <Card>
       <Name>{item.name}</Name>
       <Address>
         {item.street}, {item.zipcode} {item.city}
       </Address>
       <Load>{item.load}</Load>
-    </ListItemCard>
+    </Card>
   )
 }
 
@@ -24,9 +24,8 @@ ListItem.propTypes = {
   }),
 }
 
-const ListItemCard = styled.li`
+const Card = styled.li`
   position: relative;
-  border: 1px solid #bbb;
   padding: 12px;
   background: #eee;
   list-style: none;
