@@ -44,16 +44,27 @@ export default function Search() {
         active: true,
         warning: true,
       })
-      // setMessage('Bitte geben Sie eine Straße ein.')
       event.target.street.focus()
     } else if (!Number(houseNumber) || houseNumber.length === 0) {
-      // setMessage('Bitte geben Sie bei Hausnummer eine Zahl ein.')
+      setMessage({
+        text: 'Bitte geben Sie eine Hausnummner ein.',
+        active: true,
+        warning: true,
+      })
       event.target.houseNumber.focus()
     } else if (!Number(zip) || zip.length === 0) {
-      // setMessage('Bitte geben Sie bei Postleitzahl eine Zahl ein.')
+      setMessage({
+        text: 'Bitte geben Sie eine Postleitzahl ein.',
+        active: true,
+        warning: true,
+      })
       event.target.zip.focus()
     } else if (city.length === 0) {
-      // setMessage('Bitte geben Sie bei Stadt ein.')
+      setMessage({
+        text: 'Bitte geben Sie eine Stadt ein.',
+        active: true,
+        warning: true,
+      })
       event.target.city.focus()
     } else {
       const search = `${street} ${houseNumber}
