@@ -6,9 +6,11 @@ import ListItem from './ListItem'
 export default function List({ list }) {
   return (
     <ListStyled>
-      {list.map(item => (
-        <ListItem item={item} />
-      ))}
+      {list
+        .sort((a, b) => Number(a.load) > Number(b.load))
+        .map(item => (
+          <ListItem item={item} />
+        ))}
     </ListStyled>
   )
 }
