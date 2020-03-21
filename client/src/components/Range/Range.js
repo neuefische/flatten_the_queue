@@ -6,7 +6,7 @@ import React from 'react'
 
 export default function Range() {
   return (
-    <Slider rootStyle={sliderStyle} domain={[0, 100]} step={25} values={[30]}>
+    <Slider rootStyle={sliderStyle} domain={[1, 4]} step={1} values={[2]}>
       <Rail>
         {({ getRailProps }) => <div style={railStyle} {...getRailProps()} />}
       </Rail>

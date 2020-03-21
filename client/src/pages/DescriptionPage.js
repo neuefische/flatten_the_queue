@@ -24,8 +24,12 @@ export default function DescriptionPage() {
         </p>
       </Status>
 
-      <input type="checkbox" id="status" name="status" />
-      <label for="status"> Ich befinde mich aktuell in diesem Supermarkt</label>
+      <Location>
+        <input type="checkbox" id="status" name="status" />
+        <label for="status">
+          Ich befinde mich aktuell in diesem Supermarkt
+        </label>
+      </Location>
 
       <p>
         Wie ist der aktuelle Stand in diesem Supermarkt?
@@ -39,15 +43,6 @@ export default function DescriptionPage() {
   )
 }
 
-const Status = styled.div`
-  font-size: 14px;
-`
-const Visitor = styled.span`
-  display: block;
-`
-const Time = styled.span`
-  display: block;
-`
 const DateStyled = styled.span`
   display: block;
   margin-top: 8px;
@@ -71,4 +66,16 @@ const Address = styled.h2`
   .city {
     display: block;
   }
+`
+const Location = styled.div`
+  display: flex;
+`
+const Status = styled.div`
+  font-size: 14px;
+`
+const Visitor = styled.span`
+  display: block;
+`
+const Time = styled.span`
+  display: block;
 `
