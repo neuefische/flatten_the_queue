@@ -21,12 +21,11 @@ export default function HomePage() {
         <Search handleChange={handleChange} />
         <List list={list} />
       </>
-      )
     </Main>
   )
   function handleChange(filter) {
     const filteredMarkets = getMarketsByZipCode(filter, list)
-    filteredMarkets !== -1 ? setList(filteredMarkets) : setList(testdata)
+    filteredMarkets !== -1 ? setList(filteredMarkets) : setList(list)
   }
 }
 
