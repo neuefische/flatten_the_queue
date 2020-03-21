@@ -19,4 +19,6 @@ server.use(cors())
 server.set('json spaces', 2)
 
 import demoRoute from './routes/demo'
+import marketRoute from './routes/market'
 server.use('/demo', demoRoute)
+server.use('/market', marketRoute)
