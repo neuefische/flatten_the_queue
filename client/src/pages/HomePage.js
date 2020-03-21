@@ -7,7 +7,7 @@ import styled from 'styled-components/macro'
 
 export default function HomePage() {
   const [expressReady, setExpressReady] = useState(false)
-
+  const [list, setList] = useState(testdata)
   // testing the server
   useEffect(() => {
     getDemo()
@@ -20,12 +20,13 @@ export default function HomePage() {
       {expressReady && (
         <>
           <SubHeader>Supermärkte in der Nähe ...</SubHeader>
-          <Search />
-          <List list={testdata} />
+          <Search handleChange={handleChange} />
+          <List list={list} />
         </>
       )}
     </Main>
   )
+  function handleChange() {}
 }
 
 const Main = styled.main`
