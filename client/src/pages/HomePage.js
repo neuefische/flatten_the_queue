@@ -3,6 +3,7 @@ import { getNearbyMarkets } from '../services'
 import List from '../components/List'
 import Search from '../components/Search'
 import styled from 'styled-components/macro'
+import { getMarketsByZipCode } from '../common/utils'
 
 export default function HomePage() {
   const [list, setList] = useState([])
@@ -23,7 +24,10 @@ export default function HomePage() {
       )
     </Main>
   )
-  function handleChange() {}
+  function handleChange(filter) {
+    const filteredMarkets = getMarketsByZipCode(filter, list)
+    filteredMarkets !== -1 ? setList(filteredMarkets) : setList(testdata)
+  }
 }
 
 const Main = styled.main`

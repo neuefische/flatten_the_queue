@@ -5,6 +5,7 @@ import Navigation from './common/Navigation'
 import AboutPage from './pages/AboutPage'
 import HomePage from './pages/HomePage'
 
+
 export default function App() {
   return (
     <Router>

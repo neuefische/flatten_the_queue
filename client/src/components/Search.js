@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 
-export default function Search() {
-  return <Input placeholder="Suche ..." />
+export default function Search({ handleChange }) {
+  const [filter, setFilter] = useState('')
+
+  return <Input placeholder="Suche ..." onChange={onChange} value={filter} />
+  function onChange(event) {
+    setFilter(event.target.value)
+    handleChange(event.target.value)
+  }
 }
 
 const Input = styled.input`
