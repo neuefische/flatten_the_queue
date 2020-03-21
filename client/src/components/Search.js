@@ -2,29 +2,60 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 
 export default function Search() {
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState({
+    street: '',
+    houseNumber: new Number(),
+    zip: new Number(),
+    city: '',
+  })
+
+  const [message, setMessage] = useState('')
 
   return (
     <>
       <Form onSubmit={handleSubmit}>
         <InputRow>
           <Input placeholder="Straße" type="text" name="street" />
-          <Input placeholder="Nummer" type="text" name="houseNumber" />
+          <Input placeholder="Nummer" type="number" name="houseNumber" />
         </InputRow>
-        <Input placeholder="Postleitzahl" type="text" name="zip" />
+        <Input placeholder="Postleitzahl" type="number" name="zip" />
         <Input placeholder="Stadt" type="text" name="city" />
         <Button type="submit">suchen</Button>
-        <p>{filter}</p>
+        {message.length > 0 && <Answer>{message}</Answer>}
       </Form>
     </>
   )
 
   function handleSubmit(event) {
     event.preventDefault()
-    const search = `${event.target.street.value} ${event.target.houseNumber.value}
-    ${event.target.zip.value} ${event.target.city.value}
-    `
-    setFilter(search)
+    const street = event.target.street.value
+    const houseNumber = event.target.houseNumber.value
+    const zip = event.target.zip.value
+    const city = event.target.city.value
+    if (street.length === 0) {
+      setMessage('Bitte geben Sie eine Straße ein.')
+      event.target.street.focus()
+    } else if (!Number(houseNumber) || houseNumber.length === 0) {
+      setMessage('Bitte geben Sie bei Hausnummer eine Zahl ein.')
+      event.target.houseNumber.focus()
+    } else if (!Number(zip) || zip.length === 0) {
+      setMessage('Bitte geben Sie bei Postleitzahl eine Zahl ein.')
+      event.target.zip.focus()
+    } else if (city.length === 0) {
+      setMessage('Bitte geben Sie bei Stadt ein.')
+      event.target.city.focus()
+    } else {
+      const search = `${street} ${houseNumber}
+      ${zip} ${city}
+      `
+      setFilter({
+        street,
+        houseNumber,
+        zip,
+        city,
+      })
+      setMessage(`Suchadresse: ${search}`)
+    }
   }
 }
 
@@ -48,6 +79,14 @@ const Input = styled.input`
   color: inherit;
 `
 const Button = styled.button`
+  padding: 12px;
+  width: 100%;
+  border: 2px solid #bbb;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+`
+const Answer = styled.p`
   padding: 12px;
   width: 100%;
   border: 2px solid #bbb;
