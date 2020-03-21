@@ -7,7 +7,6 @@ import AboutPage from './pages/AboutPage'
 import HomePage from './pages/HomePage'
 import ResultPage from './pages/ResultPage'
 import { getNearbyMarkets } from './services'
-import List from './components/List'
 
 export default function App() {
   const [list, setList] = useState([])
