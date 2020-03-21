@@ -9,7 +9,11 @@ export default function Search() {
     city: '',
   })
 
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState({
+    active: false,
+    text: '',
+    warning: false,
+  })
 
   return (
     <>
@@ -21,7 +25,9 @@ export default function Search() {
         <Input placeholder="Postleitzahl" type="number" name="zip" />
         <Input placeholder="Stadt" type="text" name="city" />
         <Button type="submit">suchen</Button>
-        {message.length > 0 && <Answer>{message}</Answer>}
+        {message.active && (
+          <Answer warning={message.warning}>{message.text}</Answer>
+        )}
       </Form>
     </>
   )
@@ -33,16 +39,21 @@ export default function Search() {
     const zip = event.target.zip.value
     const city = event.target.city.value
     if (street.length === 0) {
-      setMessage('Bitte geben Sie eine Straße ein.')
+      setMessage({
+        text: 'Bitte geben Sie eine Straße ein.',
+        active: true,
+        warning: true,
+      })
+      // setMessage('Bitte geben Sie eine Straße ein.')
       event.target.street.focus()
     } else if (!Number(houseNumber) || houseNumber.length === 0) {
-      setMessage('Bitte geben Sie bei Hausnummer eine Zahl ein.')
+      // setMessage('Bitte geben Sie bei Hausnummer eine Zahl ein.')
       event.target.houseNumber.focus()
     } else if (!Number(zip) || zip.length === 0) {
-      setMessage('Bitte geben Sie bei Postleitzahl eine Zahl ein.')
+      // setMessage('Bitte geben Sie bei Postleitzahl eine Zahl ein.')
       event.target.zip.focus()
     } else if (city.length === 0) {
-      setMessage('Bitte geben Sie bei Stadt ein.')
+      // setMessage('Bitte geben Sie bei Stadt ein.')
       event.target.city.focus()
     } else {
       const search = `${street} ${houseNumber}
@@ -54,7 +65,11 @@ export default function Search() {
         zip,
         city,
       })
-      setMessage(`Suchadresse: ${search}`)
+      setMessage({
+        text: `Suchadresse: ${search}`,
+        active: true,
+        warning: false,
+      })
     }
   }
 }
@@ -88,9 +103,10 @@ const Button = styled.button`
 `
 const Answer = styled.p`
   padding: 12px;
+  margin: 8px 0;
   width: 100%;
   border: 2px solid #bbb;
   font-family: inherit;
-  color: inherit;
-  cursor: pointer;
+  color: ${props => (props.warning ? 'red' : 'green')};
+  border-color: ${props => (props.warning ? 'red' : 'green')};
 `
