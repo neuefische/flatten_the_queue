@@ -7,9 +7,13 @@ export default function ListItem({ item }) {
     <Card>
       <Name>{item.name}</Name>
       <Address>
-        {item.street}, {item.zipcode} {item.city}
+        {item.street},<br />
+        {item.zipcode} {item.city}
       </Address>
-      <Load>{item.load}</Load>
+      <Load>
+        <Number>{item.load}</Number>
+        Besucher
+      </Load>
     </Card>
   )
 }
@@ -29,7 +33,7 @@ const Card = styled.li`
   padding: 12px;
   background: #eee;
   list-style: none;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: inherit;
 `
 
 const Name = styled.h3`
@@ -44,8 +48,17 @@ const Address = styled.h3`
   color: #bbb;
 `
 const Load = styled.strong`
+  display: grid;
+  grid-template: auto auto;
   position: absolute;
   right: 20px;
-  top: calc(50% - 12px);
+  top: calc(50% - 20px);
   color: #bbb;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 300;
+`
+const Number = styled.strong`
+  font-size: 1.2rem;
+  font-weight: 700;
 `
