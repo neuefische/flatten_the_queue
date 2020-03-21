@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Kaufladen",
+    "street": "Musterstraße 4",
+    "zipcode": "12345",
+    "city": "Musterstadt",
+    "load": "50"
+  },
+  {
+    "name": "Tante Emma",
+    "street": "Hauptstraße 20",
+    "zipcode": "54321",
+    "city": "Wurststadt",
+    "load": "10"
+  },
+  {
+    "name": "Kaufwunder",
+    "street": "Musterstraße 4",
+    "zipcode": "12345",
+    "city": "Musterstadt",
+    "load": "50"
+  },
+  {
+    "name": "REWE City",
+    "street": "Mannstraße 37",
+    "zipcode": "54321",
+    "city": "Wursttadt",
+    "load": "60"
+  },
+  {
+    "name": "Kaufland",
+    "street": "Musterstraße 4",
+    "zipcode": "34345",
+    "city": "Teehausen",
+    "load": "64"
+  },
+  {
+    "name": "Kaufladen",
+    "street": "Landstraße 149",
+    "zipcode": "34345",
+    "city": "Teehausen",
+    "load": "70"
+  },
+  {
+    "name": "Essen und Trinken",
+    "street": "Marktstraße 46",
+    "zipcode": "54321",
+    "city": "Wurststadt",
+    "load": "10"
+  },
+  {
+    "name": "Alles mit Brow",
+    "street": "Theodor-Hans-Platz 7",
+    "zipcode": "12345",
+    "city": "Musterstadt",
+    "load": "5"
+  },
+  {
+    "name": "REWE City",
+    "street": "Mannstraße 37",
+    "zipcode": "34345",
+    "city": "Teehausen",
+    "load": "60"
+  },
+  {
+    "name": "EDEKA Westermann",
+    "street": "Musterstraße 88",
+    "zipcode": "34345",
+    "city": "Teehausen",
+    "load": "54"
+  }
+]

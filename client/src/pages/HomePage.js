@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { getDemo } from '../services'
+import testdata from '../.mockdata/testdata.json'
+import List from '../components/List'
+import Search from '../components/Search'
+import styled from 'styled-components/macro'
 
 export default function HomePage() {
   const [expressReady, setExpressReady] = useState(false)
-
+  const [list, setList] = useState(testdata)
   // testing the server
   useEffect(() => {
     getDemo()
@@ -12,9 +16,25 @@ export default function HomePage() {
   })
 
   return (
-    <main>
-      <h1>Home</h1>
-      {expressReady && 'express is ready'}
-    </main>
+    <Main>
+      {expressReady && (
+        <>
+          <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+          <Search handleChange={handleChange} />
+          <List list={list} />
+        </>
+      )}
+    </Main>
   )
+  function handleChange() {}
 }
+
+const Main = styled.main`
+  padding: 0 20px;
+  overflow-y: scroll;
+  background: #fff;
+`
+
+const SubHeader = styled.h2`
+  font-size: 1.4rem;
+`
