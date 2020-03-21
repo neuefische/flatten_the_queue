@@ -13,6 +13,7 @@ export default createGlobalStyle`
     line-height: 1.4;
     overflow: hidden;
     height: 100vh;
+    color: #494947;
   }
 
   input, button, textarea {
