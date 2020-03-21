@@ -4,6 +4,8 @@ import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
+import testData from './common/testdata.json'
+import { getMarketsByZipCode } from './common/utils'
 
 export default function App() {
   return (
