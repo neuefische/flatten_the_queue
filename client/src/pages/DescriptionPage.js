@@ -50,9 +50,10 @@ const DateStyled = styled.span`
 `
 
 const Main = styled.main`
+  margin-top: 35px;
   padding: 0 20px;
   overflow-y: scroll;
-  background: #fff;
+
   height: 100vh;
 `
 const SubHeader = styled.h1`
