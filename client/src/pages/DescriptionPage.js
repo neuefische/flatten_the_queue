@@ -46,7 +46,7 @@ export default function DescriptionPage({ market }) {
       </Status>
       <Status>
         <Time>
-          <IconClock className="icon" icon={faClock} /> ? Min.
+          <IconClock className="icon" icon={faClock} /> {market.time_spent} Min.
         </Time>{' '}
         verbringen die Meschen in der Regel hier
       </Status>
@@ -202,4 +202,10 @@ const IconClock = styled(FontAwesomeIcon)`
   top: 4px;
   width: 20px;
   display: inline-block;
+  input:not(:checked) + label {
+    &:after {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
 `
