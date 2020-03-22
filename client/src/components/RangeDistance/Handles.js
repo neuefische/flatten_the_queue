@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 export default function Handle({
   handle: { id, value, percent },
   getHandleProps,
-  setLoad,
+  setRadius,
 }) {
   return (
     <Handler
@@ -14,15 +14,8 @@ export default function Handle({
       {...getHandleProps(id)}
     >
       <RangeLabel>
-        {setLoad(value)}
-
-        {value === 1
-          ? 'leer'
-          : value === 2
-          ? 'fast leer'
-          : value === 3
-          ? 'fast voll'
-          : 'voll'}
+        {setRadius(value)}
+        {value} km
       </RangeLabel>
     </Handler>
   )

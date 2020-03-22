@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import RangeDistance from './RangeDistance/RangeDistance'
 
 export default function Search({ handleChange }) {
   const [message, setMessage] = useState({
@@ -7,12 +8,13 @@ export default function Search({ handleChange }) {
     text: '',
     warning: false,
   })
+  const [radius, setRadius] = useState(2)
 
   return (
     <>
       <Form onSubmit={handleSubmit}>
         <Input placeholder="Addresse" type="text" name="address" />
-        <Range step="1" min="1" max="20" type="range" name="distance" />
+        <RangeDistance setRadius={setRadius} />
         {message.active && (
           <Answer warning={message.warning}>{message.text}</Answer>
         )}
@@ -23,8 +25,8 @@ export default function Search({ handleChange }) {
   function handleSubmit(event) {
     event.preventDefault()
     const address = event.target.address.value
-    const distance = event.target.distance.value
-    const distanceInMeter = Number(distance) * 1000
+    // const distance = event.target.distance.value
+    const radiusInMeter = Number(radius) * 1000
     if (address.length === 0) {
       setMessage({
         text: 'Bitte geben Sie eine Adresse ein.',
@@ -33,15 +35,8 @@ export default function Search({ handleChange }) {
       })
       event.target.address.focus()
     } else {
-      setMessage({
-        text: `Suchadresse: ${address}
-        Entfernung: ${distance}km`,
-        active: true,
-        warning: false,
-      })
       const encodedAddress = prepareAddressString(address)
-
-      handleChange(encodedAddress, distanceInMeter)
+      handleChange(encodedAddress, radiusInMeter)
     }
   }
 
@@ -62,18 +57,9 @@ export default function Search({ handleChange }) {
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `
 
 const Input = styled.input`
-  margin-bottom: 4px;
-  padding: 12px;
-  width: 100%;
-  border: 2px solid #bbb;
-  font-family: inherit;
-  color: inherit;
-`
-const Range = styled.input`
   margin-bottom: 4px;
   padding: 12px;
   width: 100%;
