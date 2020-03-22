@@ -4,6 +4,7 @@ import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
 import AboutPage from './pages/AboutPage'
 import HomePage from './pages/HomePage'
+import DescriptionPage from './pages/DescriptionPage'
 import ResultPage from './pages/ResultPage'
 import { getNearbyMarkets } from './services'
 
@@ -28,6 +29,9 @@ export default function App() {
           </Route>
           <Route path="/about">
             <AboutPage />
+          </Route>
+          <Route path="/description">
+            <DescriptionPage />
           </Route>
         </Switch>
         <Navigation />
