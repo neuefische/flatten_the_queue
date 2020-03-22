@@ -34,6 +34,7 @@ export default createGlobalStyle`
     line-height: 1.22;
     text-align: center;
     color: #494947;
+    margin-top: 0
   }
 
   main {

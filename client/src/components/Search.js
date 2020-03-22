@@ -11,7 +11,11 @@ export default function Search({ handleChange }) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Input placeholder="Addresse" type="text" name="address" />
+        <Input
+          placeholder="Gebe Deine Adresse ein ..."
+          type="text"
+          name="address"
+        />
         <Range step="1" min="1" max="20" type="range" name="distance" />
         {message.active && (
           <Answer warning={message.warning}>{message.text}</Answer>
@@ -67,7 +71,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   margin-bottom: 10px;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   border-radius: 30px;
   border: 0;
@@ -75,6 +79,8 @@ const Input = styled.input`
   font-family: inherit;
   color: inherit;
   text-align: center;
+  border: solid 1px #c4c4c4;
+  background-color: #ffffff;
 `
 const Range = styled.input`
   margin-bottom: 4px;

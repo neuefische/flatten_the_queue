@@ -20,7 +20,7 @@ const LinkStyled = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: gray;
+  background: #494947;
 
   &.active {
     background: #f77d33;
