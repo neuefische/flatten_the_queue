@@ -34,7 +34,7 @@ export default function DescriptionPage() {
       <p>
         Wie ist der aktuelle Stand in diesem Supermarkt?
         <DateStyled>
-          {date}.{month}.{year} - {hours}:{minutes}
+          {date}.{month}.{year} - {hours}:{minutes} Uhr
         </DateStyled>
       </p>
 
@@ -69,6 +69,7 @@ const Address = styled.h2`
 `
 const Location = styled.div`
   display: flex;
+  margin-top: 60px;
 
   > input {
     opacity: 0;

@@ -49,8 +49,8 @@ const sliderStyle = {
 const railStyle = {
   position: 'absolute',
   width: '100%',
-  height: 10,
+  height: 12,
   marginTop: 35,
-  borderRadius: 5,
+  borderRadius: 7,
   backgroundColor: '#D8D8D8',
 }

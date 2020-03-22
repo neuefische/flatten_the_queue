@@ -26,7 +26,7 @@ export default function Handle({
 }
 
 const RangeLabel = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   margin-top: -20px;
   margin-left: -25px;
   width: 70px;
@@ -34,10 +34,10 @@ const RangeLabel = styled.div`
 const Handler = styled.div`
   position: absolute;
   margin-left: -15px;
-  margin-top: 30px;
+  margin-top: 28px;
   z-index: 2;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border: 0;
   text-align: center;
   cursor: pointer;
