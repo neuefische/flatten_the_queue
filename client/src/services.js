@@ -5,6 +5,6 @@ export function getDemo() {
 }
 
 export function getNearbyMarkets(input, radius) {
-  // return axios.get(`/market/nearby?input=${input}&radius=${radius}`)
-  return axios.get(`/mock/nearby?input=${input}&radius=${radius}`)
+  return axios.get(`/market/nearby?input=${input}&radius=${radius}`)
+  //return axios.get(`/mock/nearby?input=${input}&radius=${radius}`)
 }
