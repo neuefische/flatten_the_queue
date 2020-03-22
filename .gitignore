@@ -12,6 +12,9 @@ cypress
 # production
 build
 
+# python api key
+api_key.json
+
 # misc
 .DS_Store
 .env
