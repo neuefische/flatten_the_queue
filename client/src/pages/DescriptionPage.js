@@ -69,6 +69,40 @@ const Address = styled.h2`
 `
 const Location = styled.div`
   display: flex;
+
+  > input {
+    opacity: 0;
+  }
+  > input + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      width: 17px;
+      height: 17px;
+      border: 2px solid #ee833f;
+      border-radius: 3px;
+    }
+    &:after {
+      content: '✓';
+      position: absolute;
+
+      left: 4px;
+      font-size: 18px;
+      color: #ee833f;
+      transition: all 0.2s;
+    }
+  }
+  > input:not(:checked) + label {
+    &:after {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
 `
 const Status = styled.div`
   font-size: 14px;
