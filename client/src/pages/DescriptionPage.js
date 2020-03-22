@@ -89,9 +89,9 @@ const Location = styled.div`
     }
     &:after {
       content: '✓';
-      position: absolute;
-
-      left: 4px;
+      position: relative;
+      left: -125px;
+      top: -25px;
       font-size: 18px;
       color: #ee833f;
       transition: all 0.2s;
