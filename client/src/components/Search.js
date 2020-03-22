@@ -33,14 +33,7 @@ export default function Search({ handleChange }) {
       })
       event.target.address.focus()
     } else {
-      setMessage({
-        text: `Suchadresse: ${address}
-        Entfernung: ${distance}km`,
-        active: true,
-        warning: false,
-      })
       const encodedAddress = prepareAddressString(address)
-
       handleChange(encodedAddress, distanceInMeter)
     }
   }
