@@ -39,9 +39,23 @@ export default function Search({ handleChange }) {
         active: true,
         warning: false,
       })
+      const encodedAddress = prepareAddressString(address)
 
-      handleChange(address, distanceInMeter)
+      handleChange(encodedAddress, distanceInMeter)
     }
+  }
+
+  function prepareAddressString(address) {
+    const replacedGermanMutatedVowels = address
+      .replace(/\u00c4/g, 'Ae')
+      .replace(/\u00e4/g, 'ae')
+      .replace(/\u00dc/g, 'Ue')
+      .replace(/\u00fc/g, 'ue')
+      .replace(/\u00d6/g, 'Oe')
+      .replace(/\u00f6/g, 'oe')
+      .replace(/\u00df/g, 'ss')
+    const encodedAddress = encodeURIComponent(replacedGermanMutatedVowels)
+    return encodedAddress
   }
 }
 
