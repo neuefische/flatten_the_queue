@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage'
 import DescriptionPage from './pages/DescriptionPage'
 import HomePage from './pages/HomePage'
 import { getNearbyMarkets } from './services'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export default function App() {
   const [list, setList] = useState([])
@@ -14,7 +16,10 @@ export default function App() {
   return (
     <Router>
       <AppGrid>
-        <Header>flatten the queue</Header>
+        <Header>
+          <Icon className="icon" icon={faShoppingCart} />
+          flatten the queue
+        </Header>
         <Switch>
           <Route exact path="/">
             <HomePage
@@ -63,4 +68,9 @@ const Header = styled.header`
   align-items: center;
   font-size: 20px;
   letter-spacing: 1px;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  margin-right: 15px;
+  font-size: 24px;
 `

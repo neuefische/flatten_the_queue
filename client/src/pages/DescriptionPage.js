@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Range from '../components/Range/Range'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useHistory } from 'react-router-dom'
 
 export default function DescriptionPage({ market }) {
@@ -16,19 +21,27 @@ export default function DescriptionPage({ market }) {
 
   return (
     <Main>
-      <SubHeader>{market.name}</SubHeader>
+      <h1>{market.name}</h1>
       <Address>
         {market.street}
         <span className="city">{market.city}</span>
       </Address>
 
       <Status>
-        Auslastung: <Visitor>{market.load || '?'}%</Visitor>
-        <p>
-          In der Regel verbringen Meschen hier: <Time>? Minuten</Time>
-        </p>
+        <Visitor>
+          <Icon className="icon" icon={faThermometerThreeQuarters} />
+          {/* <Icon icon={faThermometerHalf} /> */}
+          {/* <Icon icon={faThermometerQuarter} /> */} {market.load || '?'} %
+        </Visitor>{' '}
+        Auslastung
       </Status>
-      <Form onSubmit={handleSubmit}>
+      <Status>
+        <Time>
+          <IconClock className="icon" icon={faClock} /> ? Min.
+        </Time>{' '}
+        verbringen die Meschen in der Regel hier
+      </Status>
+      <form onSubmit={handleSubmit}>
         <Location>
           <input type="checkbox" id="status" name="status" />
           <label htmlFor="status">
@@ -45,7 +58,7 @@ export default function DescriptionPage({ market }) {
 
         <Range setLoad={setLoad} />
         <Submit type="submit">Absenden</Submit>
-      </Form>
+      </form>
     </Main>
   )
 
@@ -58,38 +71,37 @@ export default function DescriptionPage({ market }) {
   }
 }
 
+const Main = styled.main`
+  display: grid;
+  gap: 20px;
+`
+
 const DateStyled = styled.span`
   display: block;
   margin-top: 8px;
   font-size: 14px;
 `
 
-const Main = styled.main`
-  padding: 0 20px;
-  overflow-y: scroll;
-  background: #fff;
-`
-const SubHeader = styled.h1`
-  margin-top: 35px;
-
-  font-size: 1.4rem;
-  color: #ee833f;
-`
-
-const Form = styled.form``
+const Status = styled.div``
 
 const Submit = styled.button`
   width: 100%;
-  border: 2px solid #bbb;
   padding: 12px;
   font-family: inherit;
-  color: inherit;
+  color: #fff;
   cursor: pointer;
+  margin: 20px 0 40px 0;
+  background-color: #f77d33;
+  border: 0;
+  border-radius: 20px;
 `
 
 const Address = styled.h2`
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #494947;
+  margin-top: 0;
 
   .city {
     display: block;
@@ -97,48 +109,78 @@ const Address = styled.h2`
 `
 const Location = styled.div`
   display: flex;
-  margin-top: 60px;
+  margin-top: 40px;
 
-  > input {
-    opacity: 0;
+  input {
+    display: none;
   }
-  > input + label {
-    position: relative;
+
+  input + label {
     padding-left: 35px;
     cursor: pointer;
+    position: relative;
+
     &:before {
       content: '';
       position: absolute;
       left: 0;
-      top: 1px;
+      top: 3px;
       width: 17px;
       height: 17px;
       border: 2px solid #ee833f;
       border-radius: 3px;
     }
+
     &:after {
       content: '✓';
-      position: relative;
-      left: -125px;
-      top: -25px;
+      position: absolute;
+      left: 3px;
+      top: 1px;
       font-size: 18px;
       color: #ee833f;
       transition: all 0.2s;
     }
   }
-  > input:not(:checked) + label {
+
+  input:not(:checked) + label {
     &:after {
       opacity: 0;
       transform: scale(0);
     }
   }
 `
-const Status = styled.div`
-  font-size: 14px;
-`
+
 const Visitor = styled.span`
   display: block;
+  font-weight: bold;
+  color: #61a854;
+  margin-right: 5px;
 `
+
 const Time = styled.span`
   display: block;
+  font-weight: bold;
+  color: #61a854;
+  margin-right: 5px;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 24px;
+  margin-right: 10px;
+  color: #61a854;
+  position: relative;
+  top: 4px;
+  width: 20px;
+  display: inline-block;
+`
+
+const IconClock = styled(FontAwesomeIcon)`
+  font-size: 24px;
+  margin-right: 10px;
+  color: #61a854;
+  position: relative;
+  left: -4px;
+  top: 4px;
+  width: 20px;
+  display: inline-block;
 `

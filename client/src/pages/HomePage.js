@@ -6,7 +6,7 @@ import Search from '../components/Search'
 export default function HomePage({ handleChange, list, setMarket }) {
   return (
     <Main>
-      <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+      <h1>Supermärkte in deiner Nähe</h1>
       <Search handleChange={handleChange} />
       <List list={list} setMarket={setMarket} />
     </Main>
@@ -14,11 +14,5 @@ export default function HomePage({ handleChange, list, setMarket }) {
 }
 
 const Main = styled.main`
-  padding: 0 20px;
   overflow-y: scroll;
-  background: #fff;
-`
-
-const SubHeader = styled.h2`
-  font-size: 1.4rem;
 `

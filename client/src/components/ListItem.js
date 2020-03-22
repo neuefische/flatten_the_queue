@@ -1,5 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
 
 export default function ListItem({ item, setMarket }) {
@@ -20,8 +24,13 @@ export default function ListItem({ item, setMarket }) {
           {item.city}
         </Address>
         <Load>
-          <Number>{item.load || '?'}%</Number>
-          Auslastung
+          <div>
+            <Number>{item.load || '?'}%</Number>
+            Auslastung
+          </div>
+          <FontAwesomeIcon className="icon" icon={faThermometerThreeQuarters} />
+          {/* <FontAwesomeIcon icon={faThermometerHalf} /> */}
+          {/* <FontAwesomeIcon icon={faThermometerQuarter} /> */}
         </Load>
       </Card>
     </NavLinkStyled>
@@ -61,15 +70,24 @@ const Address = styled.p`
 `
 
 const Load = styled.span`
-  display: grid;
-  grid-template: auto auto;
+  display: flex;
   position: absolute;
   right: 20px;
   top: calc(50% - 15px);
   color: #61a854;
+  /* yellow: #fdd427 || red: #ff5057 */
   text-align: right;
   font-size: 12px;
   line-height: 1.1;
+
+  div {
+    display: grid;
+  }
+
+  .icon {
+    margin: 3px 0 0 10px;
+    font-size: 26px;
+  }
 `
 
 const Number = styled.strong`

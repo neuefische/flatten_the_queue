@@ -11,15 +11,17 @@ export default function Search({ handleChange }) {
   const [radius, setRadius] = useState(2)
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Input placeholder="Addresse" type="text" name="address" />
-        <RangeDistance setRadius={setRadius} />
-        {message.active && (
-          <Answer warning={message.warning}>{message.text}</Answer>
-        )}
-      </Form>
-    </>
+    <Form onSubmit={handleSubmit}>
+      <Input
+        placeholder="Gebe Deine Adresse ein ..."
+        type="text"
+        name="address"
+      />
+      <RangeDistance setRadius={setRadius} />
+      {message.active && (
+        <Answer warning={message.warning}>{message.text}</Answer>
+      )}
+    </Form>
   )
 
   function handleSubmit(event) {
@@ -60,12 +62,17 @@ const Form = styled.form`
 `
 
 const Input = styled.input`
-  margin-bottom: 4px;
-  padding: 12px;
+  margin-bottom: 10px;
+  padding: 15px;
   width: 100%;
-  border: 2px solid #bbb;
+  border-radius: 30px;
+  border: 0;
+  background-color: #ffffff;
   font-family: inherit;
   color: inherit;
+  text-align: center;
+  border: solid 1px #c4c4c4;
+  background-color: #ffffff;
 `
 
 const Answer = styled.p`

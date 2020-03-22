@@ -13,6 +13,7 @@ export default createGlobalStyle`
     line-height: 1.4;
     overflow: hidden;
     height: 100vh;
+    color: #494947;
   }
 
   input, button, textarea {
@@ -20,11 +21,12 @@ export default createGlobalStyle`
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.22;
-    color: #f77d33;
+    color: #494947;
     margin-top:0;
+    margin-bottom: 24px;
   }
 
   main {
