@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { useHistory } from 'react-router-dom'
 
 export default function DescriptionPage({ market }) {
@@ -20,22 +21,27 @@ export default function DescriptionPage({ market }) {
 
   return (
     <Main>
-      <SubHeader>{market.name}</SubHeader>
+      <h1>{market.name}</h1>
       <Address>
         {market.street}
         <span className="city">{market.city}</span>
       </Address>
 
       <Status>
-        <Icon className="icon" icon={faThermometerThreeQuarters} />
-        {/* <Icon icon={faThermometerHalf} /> */}
-        {/* <Icon icon={faThermometerQuarter} /> */}
-        Auslastung: <Visitor>{market.load || '?'}%</Visitor>
-        <p>
-          In der Regel verbringen Meschen hier: <Time>? Minuten</Time>
-        </p>
+        <Visitor>
+          <Icon className="icon" icon={faThermometerThreeQuarters} />
+          {/* <Icon icon={faThermometerHalf} /> */}
+          {/* <Icon icon={faThermometerQuarter} /> */} {market.load || '?'} %
+        </Visitor>{' '}
+        Auslastung
       </Status>
-      <Form onSubmit={handleSubmit}>
+      <Status>
+        <Time>
+          <IconClock className="icon" icon={faClock} /> ? Min.
+        </Time>{' '}
+        verbringen die Meschen in der Regel hier
+      </Status>
+      <form onSubmit={handleSubmit}>
         <Location>
           <input type="checkbox" id="status" name="status" />
           <label htmlFor="status">
@@ -52,7 +58,7 @@ export default function DescriptionPage({ market }) {
 
         <Range setLoad={setLoad} />
         <Submit type="submit">Absenden</Submit>
-      </Form>
+      </form>
     </Main>
   )
 
@@ -65,25 +71,24 @@ export default function DescriptionPage({ market }) {
   }
 }
 
+const Main = styled.main`
+  display: grid;
+  gap: 20px;
+`
+
 const DateStyled = styled.span`
   display: block;
   margin-top: 8px;
   font-size: 14px;
 `
 
-const Main = styled.main`
-  padding: 0 20px;
-  overflow-y: scroll;
-  background: #fff;
-`
 const SubHeader = styled.h1`
-  margin-top: 35px;
-
-  font-size: 1.4rem;
-  color: #ee833f;
+  margin-bottom: 0;
 `
 
-const Form = styled.form``
+const Status = styled.div`
+  font-size: 16px;
+`
 
 const Submit = styled.button`
   width: 100%;
@@ -107,7 +112,7 @@ const Address = styled.h2`
 `
 const Location = styled.div`
   display: flex;
-  margin-top: 60px;
+  margin-top: 40px;
 
   input {
     display: none;
@@ -147,20 +152,36 @@ const Location = styled.div`
     }
   }
 `
-const Status = styled.div`
-  font-size: 14px;
-  display: flex;
-`
+
 const Visitor = styled.span`
   display: block;
+  font-weight: bold;
+  color: #61a854;
+  margin-right: 5px;
 `
 const Time = styled.span`
   display: block;
+  font-weight: bold;
+  color: #61a854;
+  margin-right: 5px;
 `
 const Icon = styled(FontAwesomeIcon)`
-  font-size: 30px;
+  font-size: 24px;
   margin-right: 10px;
   color: #61a854;
   position: relative;
   top: 4px;
+  width: 20px;
+  display: inline-block;
+`
+
+const IconClock = styled(FontAwesomeIcon)`
+  font-size: 24px;
+  margin-right: 10px;
+  color: #61a854;
+  position: relative;
+  left: -4px;
+  top: 4px;
+  width: 20px;
+  display: inline-block;
 `
