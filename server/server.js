@@ -20,5 +20,7 @@ server.set('json spaces', 2)
 
 import demoRoute from './routes/demo'
 import marketRoute from './routes/market'
+import mockRoute from './routes/mock'
 server.use('/demo', demoRoute)
 server.use('/market', marketRoute)
+server.use('/mock', mockRoute)
