@@ -4,7 +4,7 @@ import Track from './Track'
 
 import React from 'react'
 
-export default function Range() {
+export default function Range({ setLoad }) {
   return (
     <Slider rootStyle={sliderStyle} domain={[1, 4]} step={1} values={[2]}>
       <Rail>
@@ -18,6 +18,7 @@ export default function Range() {
                 key={handle.id}
                 handle={handle}
                 getHandleProps={getHandleProps}
+                setLoad={setLoad}
               />
             ))}
           </div>

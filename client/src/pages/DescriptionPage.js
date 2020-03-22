@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Range from '../components/Range/Range'
 import { useHistory } from 'react-router-dom'
@@ -12,6 +12,7 @@ export default function DescriptionPage({ market }) {
 
   const history = useHistory()
   market.id || history.push('/')
+  const [load, setLoad] = useState(0)
 
   return (
     <Main>
@@ -30,7 +31,7 @@ export default function DescriptionPage({ market }) {
       <Form onSubmit={handleSubmit}>
         <Location>
           <input type="checkbox" id="status" name="status" />
-          <label for="status">
+          <label htmlFor="status">
             Ich befinde mich aktuell in diesem Supermarkt
           </label>
         </Location>
@@ -42,7 +43,7 @@ export default function DescriptionPage({ market }) {
           </DateStyled>
         </p>
 
-        <Range />
+        <Range setLoad={setLoad} />
         <Submit type="submit">Absenden</Submit>
       </Form>
     </Main>
@@ -51,7 +52,6 @@ export default function DescriptionPage({ market }) {
   function handleSubmit(event) {
     event.preventDefault()
     const present = event.target.status.checked
-    const load = 'load'
     const submit = { ...market, present: present, load: load }
     console.log(event.target)
     console.log('submit', submit)
