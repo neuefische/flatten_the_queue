@@ -18,10 +18,10 @@ export default function Search() {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <InputRow>
+        {/* <InputRow>
           <Input placeholder="Straße" type="text" name="street" />
           <Input placeholder="Nummer" type="number" name="houseNumber" />
-        </InputRow>
+        </InputRow> */}
         <Input placeholder="Postleitzahl" type="number" name="zip" />
         <Input placeholder="Stadt" type="text" name="city" />
         <Button type="submit">suchen</Button>
@@ -93,16 +93,18 @@ const Form = styled.form`
 const InputRow = styled.section`
   display: grid;
   grid-template: 1fr/ 2fr 1fr;
-  grid-gap: 4px;
 `
 
 const Input = styled.input`
-  margin-bottom: 4px;
-  padding: 12px;
+  margin-bottom: 10px;
+  padding: 20px;
   width: 100%;
-  border: 2px solid #bbb;
+  border-radius: 30px;
+  border: 0;
+  background-color: #ffffff;
   font-family: inherit;
   color: inherit;
+  text-align: center;
 `
 const Button = styled.button`
   padding: 12px;

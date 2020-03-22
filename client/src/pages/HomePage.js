@@ -6,7 +6,7 @@ import styled from 'styled-components/macro'
 export default function HomePage({ handleChange }) {
   return (
     <Main>
-      <SubHeader>Supermärkte in der Nähe ...</SubHeader>
+      <SubHeader>Wo möchtest Du einkaufen?</SubHeader>
       <Search handleChange={handleChange} />
       <Link to="/result">Result</Link>
     </Main>
@@ -14,11 +14,9 @@ export default function HomePage({ handleChange }) {
 }
 
 const Main = styled.main`
-  padding: 0 20px;
   overflow-y: scroll;
-  background: #fff;
 `
 
 const SubHeader = styled.h2`
-  font-size: 1.4rem;
+  padding: 0 20px;
 `

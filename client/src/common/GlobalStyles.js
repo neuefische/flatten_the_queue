@@ -28,6 +28,14 @@ export default createGlobalStyle`
     margin-top:0;
   }
 
+  h2 {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1.22;
+    text-align: center;
+    color: #494947;
+  }
+
   main {
     padding: 30px;
     overflow-y: scroll;
