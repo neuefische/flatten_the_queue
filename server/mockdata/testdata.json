@@ -4,7 +4,7 @@
     "street": "Musterstraße 4",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "50",
+    "load": "5",
     "id": "1f742f9a-430f-46da-ad30-2fc486b13ff8"
   },
   {
@@ -12,7 +12,7 @@
     "street": "Hauptstraße 20",
     "zipcode": "54321",
     "city": "Wurststadt",
-    "load": "10",
+    "load": "34",
     "id": "0c45eccb-c399-42e9-ba09-537574fe07ac"
   },
   {
@@ -20,7 +20,7 @@
     "street": "Musterstraße 4",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "50",
+    "load": "80",
     "id": "2b0f2e25-b0a6-4b9b-b50f-10f2509ec4c8"
   },
   {
@@ -52,7 +52,7 @@
     "street": "Marktstraße 46",
     "zipcode": "54321",
     "city": "Wurststadt",
-    "load": "10",
+    "load": "80",
     "id": "d115ff05-f4c8-4438-a3ea-7b182b876d1b"
   },
   {
@@ -60,7 +60,7 @@
     "street": "Theodor-Hans-Platz 7",
     "zipcode": "12345",
     "city": "Musterstadt",
-    "load": "5",
+    "load": "20",
     "id": "22d696f1-03e9-406d-9544-7dacfd935fef"
   },
   {

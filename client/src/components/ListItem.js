@@ -23,14 +23,25 @@ export default function ListItem({ item, setMarket }) {
           {item.street},<br />
           {item.city}
         </Address>
-        <Load>
+        <Load
+          className={
+            item.load <= 10 ? 'green' : item.load <= 50 ? 'orange' : 'red'
+          }
+        >
           <div>
             <Number>{item.load || '?'}%</Number>
             Auslastung
           </div>
-          <FontAwesomeIcon className="icon" icon={faThermometerThreeQuarters} />
-          {/* <FontAwesomeIcon icon={faThermometerHalf} /> */}
-          {/* <FontAwesomeIcon icon={faThermometerQuarter} /> */}
+          {item.load <= 10 ? (
+            <FontAwesomeIcon className="icon" icon={faThermometerQuarter} />
+          ) : item.load <= 50 ? (
+            <FontAwesomeIcon className="icon" icon={faThermometerHalf} />
+          ) : (
+            <FontAwesomeIcon
+              className="icon"
+              icon={faThermometerThreeQuarters}
+            />
+          )}
         </Load>
       </Card>
     </NavLinkStyled>
@@ -75,7 +86,6 @@ const Load = styled.span`
   right: 20px;
   top: calc(50% - 15px);
   color: #61a854;
-  /* yellow: #fdd427 || red: #ff5057 */
   text-align: right;
   font-size: 12px;
   line-height: 1.1;
@@ -87,6 +97,18 @@ const Load = styled.span`
   .icon {
     margin: 3px 0 0 10px;
     font-size: 26px;
+  }
+
+  &.green {
+    color: #61a854;
+  }
+
+  &.orange {
+    color: #fcb928;
+  }
+
+  &.red {
+    color: #ff5057;
   }
 `
 

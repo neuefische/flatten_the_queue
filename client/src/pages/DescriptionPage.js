@@ -27,11 +27,20 @@ export default function DescriptionPage({ market }) {
         <span className="city">{market.city}</span>
       </Address>
 
-      <Status>
+      <Status
+        className={
+          market.load <= 10 ? 'green' : market.load <= 50 ? 'orange' : 'red'
+        }
+      >
         <Visitor>
-          <Icon className="icon" icon={faThermometerThreeQuarters} />
-          {/* <Icon icon={faThermometerHalf} /> */}
-          {/* <Icon icon={faThermometerQuarter} /> */} {market.load || '?'} %
+          {market.load <= 10 ? (
+            <Icon className="icon" icon={faThermometerQuarter} />
+          ) : market.load <= 50 ? (
+            <Icon className="icon" icon={faThermometerHalf} />
+          ) : (
+            <Icon className="icon" icon={faThermometerThreeQuarters} />
+          )}
+          {market.load || '?'} %
         </Visitor>{' '}
         Auslastung
       </Status>
@@ -82,7 +91,19 @@ const DateStyled = styled.span`
   font-size: 14px;
 `
 
-const Status = styled.div``
+const Status = styled.div`
+  &.green {
+    color: #61a854;
+  }
+
+  &.orange {
+    color: #fcb928;
+  }
+
+  &.red {
+    color: #ff5057;
+  }
+`
 
 const Submit = styled.button`
   width: 100%;
@@ -153,7 +174,6 @@ const Location = styled.div`
 const Visitor = styled.span`
   display: block;
   font-weight: bold;
-  color: #61a854;
   margin-right: 5px;
 `
 
@@ -167,7 +187,6 @@ const Time = styled.span`
 const Icon = styled(FontAwesomeIcon)`
   font-size: 24px;
   margin-right: 10px;
-  color: #61a854;
   position: relative;
   top: 4px;
   width: 20px;
