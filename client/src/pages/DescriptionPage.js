@@ -11,15 +11,7 @@ export default function DescriptionPage({ market }) {
   const minutes = new Date().getMinutes()
 
   const history = useHistory()
-  // market.id && history.goBack()
-
-  // //   city: "Hamburg"
-  // // ​
-  // // id: "f0a23bd1dd2a1227d8b9f68c9e89b76c68ba3b3e"
-  // // ​
-  // // name: "METRO"
-  // // ​
-  // // street: "Papenreye 33"
+  market.id || history.push('/')
 
   return (
     <Main>
