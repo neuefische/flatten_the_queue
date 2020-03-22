@@ -4,28 +4,45 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { NavLink } from 'react-router-dom'
 
-export default function ListItem({ item }) {
+export default function ListItem({ item, setMarket }) {
+  console.log(item)
+  // //   city: "Hamburg"
+  // // ​
+  // // id: "f0a23bd1dd2a1227d8b9f68c9e89b76c68ba3b3e"
+  // // ​
+  // // name: "METRO"
+  // // ​
+  // // street: "Papenreye 33"
   return (
-    <Card>
-      <Name>{item.name}</Name>
-      <Address>
-        {item.street},<br />
-        {item.zipcode} {item.city}
-      </Address>
-      <Load>
-        <div>
-          <Number>{item.load}</Number>
-          Besucher
-        </div>
-        <FontAwesomeIcon className="icon" icon={faThermometerThreeQuarters} />
-        {/* <FontAwesomeIcon icon={faThermometerHalf} /> */}
-        {/* <FontAwesomeIcon icon={faThermometerQuarter} /> */}
-      </Load>
-    </Card>
+    <NavLinkStyled onClick={handleClickOnMarket} to="/description">
+      <Card>
+        <Name>{item.name}</Name>
+        <Address>
+          {item.street},<br />
+          {item.city}
+        </Address>
+        <Load>
+          <div>
+            <Number>{item.load || '?'}%</Number>
+            Auslastung
+          </div>
+          <FontAwesomeIcon className="icon" icon={faThermometerThreeQuarters} />
+          {/* <FontAwesomeIcon icon={faThermometerHalf} /> */}
+          {/* <FontAwesomeIcon icon={faThermometerQuarter} /> */}
+        </Load>
+      </Card>
+    </NavLinkStyled>
   )
+  function handleClickOnMarket() {
+    setMarket(item)
+  }
 }
 
+const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
+`
 const Card = styled.li`
   position: relative;
   padding: 12px;

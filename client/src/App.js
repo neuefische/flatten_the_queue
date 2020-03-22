@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
 import AboutPage from './pages/AboutPage'
-import HomePage from './pages/HomePage'
 import DescriptionPage from './pages/DescriptionPage'
-import ResultPage from './pages/ResultPage'
+import HomePage from './pages/HomePage'
 import { getNearbyMarkets } from './services'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export default function App() {
   const [list, setList] = useState([])
+  const [market, setMarket] = useState({})
 
   return (
     <Router>
@@ -22,16 +22,17 @@ export default function App() {
         </Header>
         <Switch>
           <Route exact path="/">
-            <HomePage handleChange={handleChange} list={list} />
-          </Route>
-          <Route path="/result">
-            <ResultPage list={list} />
+            <HomePage
+              handleChange={handleChange}
+              list={list}
+              setMarket={setMarket}
+            />
           </Route>
           <Route path="/about">
             <AboutPage />
           </Route>
           <Route path="/description">
-            <DescriptionPage />
+            <DescriptionPage market={market} />
           </Route>
         </Switch>
         <Navigation />

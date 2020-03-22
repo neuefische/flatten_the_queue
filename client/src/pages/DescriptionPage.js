@@ -1,63 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Range from '../components/Range/Range'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
 import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router-dom'
 
-export default function DescriptionPage() {
+export default function DescriptionPage({ market }) {
   const date = new Date().getDate()
   const month = new Date().getMonth() + 1
   const year = new Date().getFullYear()
   const hours = new Date().getHours()
   const minutes = new Date().getMinutes()
 
+  const history = useHistory()
+  market.id || history.push('/')
+  const [load, setLoad] = useState(0)
+
   return (
-    <main>
-      <h1>NAME</h1>
+    <Main>
+      <SubHeader>{market.name}</SubHeader>
       <Address>
-        Brauerknwachtgraben 47,
-        <span className="city">23500 Hamburg </span>
+        {market.street}
+        <span className="city">{market.city}</span>
       </Address>
 
       <Status>
         <Icon className="icon" icon={faThermometerThreeQuarters} />
         {/* <Icon icon={faThermometerHalf} /> */}
         {/* <Icon icon={faThermometerQuarter} /> */}
-        <div>
-          Livestatus: <Visitor>26 Besucher</Visitor>
-        </div>
-      </Status>
-      <Status>
+        Auslastung: <Visitor>{market.load || '?'}%</Visitor>
         <p>
-          In der Regel verbringen Meschen hier: <Time>20 Minuten</Time>
+          In der Regel verbringen Meschen hier: <Time>? Minuten</Time>
         </p>
       </Status>
+      <Form onSubmit={handleSubmit}>
+        <Location>
+          <input type="checkbox" id="status" name="status" />
+          <label htmlFor="status">
+            Ich befinde mich aktuell in diesem Supermarkt
+          </label>
+        </Location>
 
-      <Location>
-        <input type="checkbox" id="status" name="status" />
-        <label for="status">
-          Ich befinde mich aktuell in diesem Supermarkt
-        </label>
-      </Location>
+        <p>
+          Wie ist der aktuelle Stand in diesem Supermarkt?
+          <DateStyled>
+            {date}.{month}.{year} - {hours}:{minutes} Uhr
+          </DateStyled>
+        </p>
 
-      <p>
-        Wie ist der aktuelle Stand in diesem Supermarkt?
-        <DateStyled>
-          {date}.{month}.{year} - {hours}:{minutes} Uhr
-        </DateStyled>
-      </p>
-
-      <Range />
-    </main>
+        <Range setLoad={setLoad} />
+        <Submit type="submit">Absenden</Submit>
+      </Form>
+    </Main>
   )
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const present = event.target.status.checked
+    const submit = { ...market, present: present, load: load }
+    console.log(event.target)
+    console.log('submit', submit)
+  }
 }
 
 const DateStyled = styled.span`
   display: block;
   margin-top: 8px;
   font-size: 14px;
+`
+
+const Main = styled.main`
+  padding: 0 20px;
+  overflow-y: scroll;
+  background: #fff;
+`
+const SubHeader = styled.h1`
+  margin-top: 35px;
+
+  font-size: 1.4rem;
+  color: #ee833f;
+`
+
+const Form = styled.form``
+
+const Submit = styled.button`
+  width: 100%;
+  border: 2px solid #bbb;
+  padding: 12px;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
 `
 
 const Address = styled.h2`
