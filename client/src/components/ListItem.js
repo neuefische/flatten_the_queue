@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom'
 
 export default function ListItem({ item, setMarket }) {
   console.log(item)
-  //   city: "Hamburg"
-  // ​
-  // id: "f0a23bd1dd2a1227d8b9f68c9e89b76c68ba3b3e"
-  // ​
-  // name: "METRO"
-  // ​
-  // street: "Papenreye 33"
+  // //   city: "Hamburg"
+  // // ​
+  // // id: "f0a23bd1dd2a1227d8b9f68c9e89b76c68ba3b3e"
+  // // ​
+  // // name: "METRO"
+  // // ​
+  // // street: "Papenreye 33"
   return (
-    <NavLink onClick={setMarket(item)} to="/result">
+    <NavLinkStyled onClick={handleClickOnMarket} to="/description">
       <Card>
         <Name>{item.name}</Name>
         <Address>
@@ -24,10 +24,16 @@ export default function ListItem({ item, setMarket }) {
           Besucher
         </Load>
       </Card>
-    </NavLink>
+    </NavLinkStyled>
   )
+  function handleClickOnMarket() {
+    setMarket(item)
+  }
 }
 
+const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
+`
 const Card = styled.li`
   position: relative;
   padding: 12px;

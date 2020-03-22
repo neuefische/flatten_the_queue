@@ -1,46 +1,69 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import Range from '../components/Range/Range'
+import { useHistory } from 'react-router-dom'
 
-export default function DescriptionPage() {
+export default function DescriptionPage({ market }) {
   const date = new Date().getDate()
   const month = new Date().getMonth() + 1
   const year = new Date().getFullYear()
   const hours = new Date().getHours()
   const minutes = new Date().getMinutes()
 
+  const history = useHistory()
+  // market.id && history.goBack()
+
+  // //   city: "Hamburg"
+  // // ​
+  // // id: "f0a23bd1dd2a1227d8b9f68c9e89b76c68ba3b3e"
+  // // ​
+  // // name: "METRO"
+  // // ​
+  // // street: "Papenreye 33"
+
   return (
     <Main>
-      <SubHeader>NAME</SubHeader>
+      <SubHeader>{market.name}</SubHeader>
       <Address>
-        Brauerknwachtgraben 47,
-        <span className="city">23500 Hamburg </span>
+        {market.street}
+        <span className="city">{market.city}</span>
       </Address>
 
       <Status>
-        Livestatus: <Visitor>26 Besucher</Visitor>
+        Livestatus: <Visitor>? Besucher</Visitor>
         <p>
-          In der Regel verbringen Meschen hier: <Time>20 Minuten</Time>
+          In der Regel verbringen Meschen hier: <Time>? Minuten</Time>
         </p>
       </Status>
+      <Form onSubmit={handleSubmit}>
+        <Location>
+          <input type="checkbox" id="status" name="status" />
+          <label for="status">
+            Ich befinde mich aktuell in diesem Supermarkt
+          </label>
+        </Location>
 
-      <Location>
-        <input type="checkbox" id="status" name="status" />
-        <label for="status">
-          Ich befinde mich aktuell in diesem Supermarkt
-        </label>
-      </Location>
+        <p>
+          Wie ist der aktuelle Stand in diesem Supermarkt?
+          <DateStyled>
+            {date}.{month}.{year} - {hours}:{minutes} Uhr
+          </DateStyled>
+        </p>
 
-      <p>
-        Wie ist der aktuelle Stand in diesem Supermarkt?
-        <DateStyled>
-          {date}.{month}.{year} - {hours}:{minutes} Uhr
-        </DateStyled>
-      </p>
-
-      <Range />
+        <Range />
+        <Submit type="submit">Absenden</Submit>
+      </Form>
     </Main>
   )
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const present = event.target.status.checked
+    const load = 'load'
+    const submit = { ...market, present: present, load: load }
+    console.log(event.target)
+    console.log('submit', submit)
+  }
 }
 
 const DateStyled = styled.span`
@@ -49,15 +72,31 @@ const DateStyled = styled.span`
   font-size: 14px;
 `
 
+// const Main = styled.main`
+//   margin-top: 35px;
+//   padding: 0 20px;
+//   overflow-y: scroll;
+//   height: 100vh;
+// `
 const Main = styled.main`
-  margin-top: 35px;
   padding: 0 20px;
   overflow-y: scroll;
-  height: 100vh;
+  background: #fff;
 `
 const SubHeader = styled.h1`
+  margin-top: 35px;
+
   font-size: 1.4rem;
   color: #ee833f;
+`
+
+const Form = styled.form``
+const Submit = styled.button`
+  border: 1px solid black;
+  padding: 8px;
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
 `
 
 const Address = styled.h2`
