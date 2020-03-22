@@ -23,26 +23,30 @@ export default function ListItem({ item, setMarket }) {
           {item.street},<br />
           {item.city}
         </Address>
-        <Load
-          className={
-            item.load <= 10 ? 'green' : item.load <= 50 ? 'orange' : 'red'
-          }
-        >
-          <div>
-            <Number>{item.load || '?'}%</Number>
-            Auslastung
-          </div>
-          {item.load <= 10 ? (
-            <FontAwesomeIcon className="icon" icon={faThermometerQuarter} />
-          ) : item.load <= 50 ? (
-            <FontAwesomeIcon className="icon" icon={faThermometerHalf} />
-          ) : (
-            <FontAwesomeIcon
-              className="icon"
-              icon={faThermometerThreeQuarters}
-            />
-          )}
-        </Load>
+        {item.load < 101 ? (
+          <Load
+            className={
+              item.load <= 10 ? 'green' : item.load <= 50 ? 'orange' : 'red'
+            }
+          >
+            <div>
+              <Number>{item.load || '?'}%</Number>
+              Auslastung
+            </div>
+            {item.load <= 10 ? (
+              <FontAwesomeIcon className="icon" icon={faThermometerQuarter} />
+            ) : item.load <= 50 ? (
+              <FontAwesomeIcon className="icon" icon={faThermometerHalf} />
+            ) : (
+              <FontAwesomeIcon
+                className="icon"
+                icon={faThermometerThreeQuarters}
+              />
+            )}
+          </Load>
+        ) : (
+          <Closed> geschlossen </Closed>
+        )}
       </Card>
     </NavLinkStyled>
   )
@@ -115,4 +119,13 @@ const Load = styled.span`
 const Number = styled.strong`
   font-size: 18px;
   font-weight: 700;
+`
+const Closed = styled.span`
+  position: absolute;
+  right: 20px;
+  top: calc(50% - 11px);
+  color: #61a854;
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.1;
 `
