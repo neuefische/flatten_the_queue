@@ -82,21 +82,18 @@ const DateStyled = styled.span`
   font-size: 14px;
 `
 
-const SubHeader = styled.h1`
-  margin-bottom: 0;
-`
-
-const Status = styled.div`
-  font-size: 16px;
-`
+const Status = styled.div``
 
 const Submit = styled.button`
   width: 100%;
-  border: 2px solid #bbb;
   padding: 12px;
   font-family: inherit;
-  color: inherit;
+  color: #fff;
   cursor: pointer;
+  margin: 20px 0 40px 0;
+  background-color: #f77d33;
+  border: 0;
+  border-radius: 20px;
 `
 
 const Address = styled.h2`
@@ -159,12 +156,14 @@ const Visitor = styled.span`
   color: #61a854;
   margin-right: 5px;
 `
+
 const Time = styled.span`
   display: block;
   font-weight: bold;
   color: #61a854;
   margin-right: 5px;
 `
+
 const Icon = styled(FontAwesomeIcon)`
   font-size: 24px;
   margin-right: 10px;
