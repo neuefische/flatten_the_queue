@@ -86,7 +86,6 @@ const Load = styled.span`
   right: 20px;
   top: calc(50% - 15px);
   color: #61a854;
-  /* yellow: #fdd427 || red: #ff5057 */
   text-align: right;
   font-size: 12px;
   line-height: 1.1;
