@@ -23,7 +23,7 @@ export default function DescriptionPage({ market }) {
       </Address>
 
       <Status>
-        Livestatus: <Visitor>? Besucher</Visitor>
+        Auslastung: <Visitor>{market.load || '?'}%</Visitor>
         <p>
           In der Regel verbringen Meschen hier: <Time>? Minuten</Time>
         </p>
@@ -64,12 +64,6 @@ const DateStyled = styled.span`
   font-size: 14px;
 `
 
-// const Main = styled.main`
-//   margin-top: 35px;
-//   padding: 0 20px;
-//   overflow-y: scroll;
-//   height: 100vh;
-// `
 const Main = styled.main`
   padding: 0 20px;
   overflow-y: scroll;
@@ -83,12 +77,14 @@ const SubHeader = styled.h1`
 `
 
 const Form = styled.form``
+
 const Submit = styled.button`
-  border: 1px solid black;
-  padding: 8px;
   width: 100%;
-  color: inherit;
+  border: 2px solid #bbb;
+  padding: 12px;
   font-family: inherit;
+  color: inherit;
+  cursor: pointer;
 `
 
 const Address = styled.h2`

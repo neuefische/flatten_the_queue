@@ -20,8 +20,8 @@ export default function ListItem({ item, setMarket }) {
           {item.city}
         </Address>
         <Load>
-          <Number>{item.load}</Number>
-          Besucher
+          <Number>{item.load || '?'}%</Number>
+          Auslastung
         </Load>
       </Card>
     </NavLinkStyled>
