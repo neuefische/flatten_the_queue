@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import ListItem from './ListItem'
 
-export default function List({ list }) {
+export default function List({ list, setMarket }) {
   return (
     <ListStyled>
       {list.length > 0 &&
         list
           .sort((a, b) => Number(a.load) > Number(b.load))
-          .map(item => <ListItem key={item.id} item={item} />)}
+          .map(item => (
+            <ListItem key={item.id} item={item} setMarket={setMarket} />
+          ))}
     </ListStyled>
   )
 }

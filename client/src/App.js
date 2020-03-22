@@ -9,6 +9,7 @@ import { getNearbyMarkets } from './services'
 
 export default function App() {
   const [list, setList] = useState([])
+  const [market, setMaket] = useState({})
 
   return (
     <Router>
@@ -16,10 +17,14 @@ export default function App() {
         <Header>flatten the queue</Header>
         <Switch>
           <Route exact path="/">
-            <HomePage handleChange={handleChange} list={list} />
+            <HomePage
+              handleChange={handleChange}
+              list={list}
+              setMarket={setMarket}
+            />
           </Route>
           <Route path="/result">
-            <ResultPage list={list} />
+            <ResultPage market={market} />
           </Route>
           <Route path="/about">
             <AboutPage />
@@ -34,6 +39,10 @@ export default function App() {
     getNearbyMarkets(address, distance)
       .then(res => setList(res.data))
       .catch(res => console.error(res))
+  }
+  function handleClickOnMarket(event) {
+    // help function to set single market
+    setMarket()
   }
 }
 

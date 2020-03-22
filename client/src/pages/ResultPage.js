@@ -1,7 +1,7 @@
 import React from 'react'
 import List from '../components/List'
 
-export default function ResultPage({ list }) {
+export default function ResultPage({ list, market }) {
   return (
     <main>
       <h1>Supermärkte in Deiner Nähe</h1>
