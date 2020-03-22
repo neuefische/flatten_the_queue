@@ -14,7 +14,7 @@ export default function DescriptionPage() {
       <SubHeader>NAME</SubHeader>
       <Address>
         Brauerknwachtgraben 47,
-        <span className="city">Hamburg 23500</span>
+        <span className="city">23500 Hamburg </span>
       </Address>
 
       <Status>
@@ -53,7 +53,6 @@ const Main = styled.main`
   margin-top: 35px;
   padding: 0 20px;
   overflow-y: scroll;
-
   height: 100vh;
 `
 const SubHeader = styled.h1`
@@ -62,7 +61,8 @@ const SubHeader = styled.h1`
 `
 
 const Address = styled.h2`
-  font-size: 1.4rem;
+  font-weight: 500;
+  font-size: 18px;
 
   .city {
     display: block;
