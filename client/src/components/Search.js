@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 
-export default function Search() {
-  const [filter, setFilter] = useState({
-    street: '',
-    houseNumber: new Number(),
-    zip: new Number(),
-    city: '',
-  })
-
+export default function Search({ handleChange }) {
   const [message, setMessage] = useState({
     active: false,
     text: '',
@@ -18,13 +11,8 @@ export default function Search() {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        {/* <InputRow>
-          <Input placeholder="Straße" type="text" name="street" />
-          <Input placeholder="Nummer" type="number" name="houseNumber" />
-        </InputRow> */}
-        <Input placeholder="Postleitzahl" type="number" name="zip" />
-        <Input placeholder="Stadt" type="text" name="city" />
-        <Button type="submit">suchen</Button>
+        <Input placeholder="Addresse" type="text" name="address" />
+        <Range step="1" min="1" max="20" type="range" name="distance" />
         {message.active && (
           <Answer warning={message.warning}>{message.text}</Answer>
         )}
@@ -34,54 +22,40 @@ export default function Search() {
 
   function handleSubmit(event) {
     event.preventDefault()
-    const street = event.target.street.value
-    const houseNumber = event.target.houseNumber.value
-    const zip = event.target.zip.value
-    const city = event.target.city.value
-    if (street.length === 0) {
+    const address = event.target.address.value
+    const distance = event.target.distance.value
+    const distanceInMeter = Number(distance) * 1000
+    if (address.length === 0) {
       setMessage({
-        text: 'Bitte geben Sie eine Straße ein.',
+        text: 'Bitte geben Sie eine Adresse ein.',
         active: true,
         warning: true,
       })
-      event.target.street.focus()
-    } else if (!Number(houseNumber) || houseNumber.length === 0) {
-      setMessage({
-        text: 'Bitte geben Sie eine Hausnummner ein.',
-        active: true,
-        warning: true,
-      })
-      event.target.houseNumber.focus()
-    } else if (!Number(zip) || zip.length === 0) {
-      setMessage({
-        text: 'Bitte geben Sie eine Postleitzahl ein.',
-        active: true,
-        warning: true,
-      })
-      event.target.zip.focus()
-    } else if (city.length === 0) {
-      setMessage({
-        text: 'Bitte geben Sie eine Stadt ein.',
-        active: true,
-        warning: true,
-      })
-      event.target.city.focus()
+      event.target.address.focus()
     } else {
-      const search = `${street} ${houseNumber}
-      ${zip} ${city}
-      `
-      setFilter({
-        street,
-        houseNumber,
-        zip,
-        city,
-      })
       setMessage({
-        text: `Suchadresse: ${search}`,
+        text: `Suchadresse: ${address}
+        Entfernung: ${distance}km`,
         active: true,
         warning: false,
       })
+      const encodedAddress = prepareAddressString(address)
+
+      handleChange(encodedAddress, distanceInMeter)
     }
+  }
+
+  function prepareAddressString(address) {
+    const replacedGermanMutatedVowels = address
+      .replace(/\u00c4/g, 'Ae')
+      .replace(/\u00e4/g, 'ae')
+      .replace(/\u00dc/g, 'Ue')
+      .replace(/\u00fc/g, 'ue')
+      .replace(/\u00d6/g, 'Oe')
+      .replace(/\u00f6/g, 'oe')
+      .replace(/\u00df/g, 'ss')
+    const encodedAddress = encodeURIComponent(replacedGermanMutatedVowels)
+    return encodedAddress
   }
 }
 
@@ -89,10 +63,6 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`
-const InputRow = styled.section`
-  display: grid;
-  grid-template: 1fr/ 2fr 1fr;
 `
 
 const Input = styled.input`
@@ -106,14 +76,15 @@ const Input = styled.input`
   color: inherit;
   text-align: center;
 `
-const Button = styled.button`
+const Range = styled.input`
+  margin-bottom: 4px;
   padding: 12px;
   width: 100%;
   border: 2px solid #bbb;
   font-family: inherit;
   color: inherit;
-  cursor: pointer;
 `
+
 const Answer = styled.p`
   padding: 12px;
   margin: 8px 0;
