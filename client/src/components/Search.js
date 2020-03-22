@@ -8,13 +8,13 @@ export default function Search({ handleChange }) {
     text: '',
     warning: false,
   })
-  const [distance, setDistance] = useState(2)
+  const [radius, setRadius] = useState(2)
 
   return (
     <>
       <Form onSubmit={handleSubmit}>
         <Input placeholder="Addresse" type="text" name="address" />
-        <RangeDistance setDistance={setDistance} />
+        <RangeDistance setRadius={setRadius} />
         {message.active && (
           <Answer warning={message.warning}>{message.text}</Answer>
         )}
@@ -26,7 +26,7 @@ export default function Search({ handleChange }) {
     event.preventDefault()
     const address = event.target.address.value
     // const distance = event.target.distance.value
-    const distanceInMeter = Number(distance) * 1000
+    const radiusInMeter = Number(radius) * 1000
     if (address.length === 0) {
       setMessage({
         text: 'Bitte geben Sie eine Adresse ein.',
@@ -36,7 +36,7 @@ export default function Search({ handleChange }) {
       event.target.address.focus()
     } else {
       const encodedAddress = prepareAddressString(address)
-      handleChange(encodedAddress, distanceInMeter)
+      handleChange(encodedAddress, radiusInMeter)
     }
   }
 

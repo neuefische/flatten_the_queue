@@ -4,7 +4,7 @@ import Track from './Track'
 
 import React from 'react'
 
-export default function RangeDistance({ setDistance }) {
+export default function RangeDistance({ setRadius }) {
   return (
     <Slider rootStyle={sliderStyle} domain={[1, 20]} step={1} values={[2]}>
       <Rail>
@@ -18,7 +18,7 @@ export default function RangeDistance({ setDistance }) {
                 key={handle.id}
                 handle={handle}
                 getHandleProps={getHandleProps}
-                setDistance={setDistance}
+                setRadius={setRadius}
               />
             ))}
           </div>
