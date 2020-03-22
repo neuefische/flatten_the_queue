@@ -23,23 +23,23 @@ export default router
 function getPlaces(input, radius) {
   return (
     getCoordinates(input)
-      //.then(coordinates => placeCalculation(coordinates))
-      .then(({ lat, lng }) => placeSearch(lat, lng, radius))
-      .then(places =>
-        places.map(place => {
-          const [street, city] = place.vicinity.split(',')
+      .then(({ lat, lng }) => placeSearchPy(lat, lng, Math.min(radius, 2000)))
+      //.then(({ lat, lng }) => placeSearch(lat, lng, radius))
+      .then(places => {
+        return places.map(place => {
+          //          const [street, city] = place.vicinity.split(',')
           return {
             name: place.name,
             id: place.id,
-            street: street.trim(),
-            city: city.trim(),
-            load: Math.floor(1 + Math.random() * 100),
-            time_spent: Math.floor(5 + Math.random() * 40),
+            street: place.street,
+            city: place.city,
+            load: place.current_popularity,
+            time_spent: place.time_spent,
           }
         })
-      )
+      })
       .catch(err => {
-        console.log(err)
+        console.error(err)
         return []
       })
   )
@@ -69,21 +69,21 @@ function placeSearch(latitude, longitude, radius = 1000) {
     .then(places => places.data.results)
 }
 
-// async function placeCalculation(data) {
-//   let largeDataSet = []
-//   // spawn new child process to call the python script
-//   const python = spawn('python3', ['script3.py', JSON.stringify(data)])
-//   // collect data from script
-//   python.stdout.on('data', function(data) {
-//     console.log('Pipe data from python script ...')
-//     largeDataSet.push(data)
-//   })
-//   // in close event we are sure that stream is from child process is closed
-//   await python.on('close', code => {
-//     console.log(`child process close all stdio with code ${code}`)
-//     // send data to browser
-//     largeDataSet = JSON.parse(largeDataSet.join(''))
-//     console.log(largeDataSet)
-//   })
-//   return largeDataSet
-// }
+function placeSearchPy(lat, lng, radius) {
+  return new Promise((resolve, reject) => {
+    let largeDataSet = []
+    // spawn new child process to call the python script
+    const python = spawn('python3', ['run.py', lat, lng, radius])
+    // collect data from script
+    python.stdout.on('data', function(data) {
+      console.log('Pipe data from python script ...')
+      largeDataSet.push(data)
+    })
+    // in close event we are sure that stream is from child process is closed
+    python.on('close', code => {
+      console.log(`child process close all stdio with code ${code}`)
+      // send data to browser
+      resolve(JSON.parse(largeDataSet.join('')))
+    })
+  })
+}

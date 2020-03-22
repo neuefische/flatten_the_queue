@@ -12,8 +12,10 @@ cypress
 # production
 build
 
-# python api key
+# python stuff
 api_key.json
+df1.csv
+df2.csv
 
 # misc
 .DS_Store
