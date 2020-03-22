@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Navigation from './common/Navigation'
 import AboutPage from './pages/AboutPage'
-import HomePage from './pages/HomePage'
 import DescriptionPage from './pages/DescriptionPage'
-import ResultPage from './pages/ResultPage'
+import HomePage from './pages/HomePage'
 import { getNearbyMarkets } from './services'
 
 export default function App() {
@@ -23,9 +22,6 @@ export default function App() {
               list={list}
               setMarket={setMarket}
             />
-          </Route>
-          <Route path="/result">
-            <ResultPage market={market} />
           </Route>
           <Route path="/about">
             <AboutPage />
