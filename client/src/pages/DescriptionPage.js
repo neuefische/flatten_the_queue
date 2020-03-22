@@ -1,6 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import Range from '../components/Range/Range'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThermometerQuarter } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerHalf } from '@fortawesome/free-solid-svg-icons'
+import { faThermometerThreeQuarters } from '@fortawesome/free-solid-svg-icons'
 
 export default function DescriptionPage() {
   const date = new Date().getDate()
@@ -10,15 +14,22 @@ export default function DescriptionPage() {
   const minutes = new Date().getMinutes()
 
   return (
-    <Main>
-      <SubHeader>NAME</SubHeader>
+    <main>
+      <h1>NAME</h1>
       <Address>
         Brauerknwachtgraben 47,
         <span className="city">23500 Hamburg </span>
       </Address>
 
       <Status>
-        Livestatus: <Visitor>26 Besucher</Visitor>
+        <Icon className="icon" icon={faThermometerThreeQuarters} />
+        {/* <Icon icon={faThermometerHalf} /> */}
+        {/* <Icon icon={faThermometerQuarter} /> */}
+        <div>
+          Livestatus: <Visitor>26 Besucher</Visitor>
+        </div>
+      </Status>
+      <Status>
         <p>
           In der Regel verbringen Meschen hier: <Time>20 Minuten</Time>
         </p>
@@ -39,7 +50,7 @@ export default function DescriptionPage() {
       </p>
 
       <Range />
-    </Main>
+    </main>
   )
 }
 
@@ -49,20 +60,12 @@ const DateStyled = styled.span`
   font-size: 14px;
 `
 
-const Main = styled.main`
-  margin-top: 35px;
-  padding: 0 20px;
-  overflow-y: scroll;
-  height: 100vh;
-`
-const SubHeader = styled.h1`
-  font-size: 1.4rem;
-  color: #ee833f;
-`
-
 const Address = styled.h2`
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #494947;
+  margin-top: 0;
 
   .city {
     display: block;
@@ -72,34 +75,38 @@ const Location = styled.div`
   display: flex;
   margin-top: 60px;
 
-  > input {
-    opacity: 0;
+  input {
+    display: none;
   }
-  > input + label {
-    position: relative;
+
+  input + label {
     padding-left: 35px;
     cursor: pointer;
+    position: relative;
+
     &:before {
       content: '';
       position: absolute;
       left: 0;
-      top: 1px;
+      top: 3px;
       width: 17px;
       height: 17px;
       border: 2px solid #ee833f;
       border-radius: 3px;
     }
+
     &:after {
       content: '✓';
-      position: relative;
-      left: -125px;
-      top: -25px;
+      position: absolute;
+      left: 3px;
+      top: 1px;
       font-size: 18px;
       color: #ee833f;
       transition: all 0.2s;
     }
   }
-  > input:not(:checked) + label {
+
+  input:not(:checked) + label {
     &:after {
       opacity: 0;
       transform: scale(0);
@@ -108,10 +115,18 @@ const Location = styled.div`
 `
 const Status = styled.div`
   font-size: 14px;
+  display: flex;
 `
 const Visitor = styled.span`
   display: block;
 `
 const Time = styled.span`
   display: block;
+`
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 30px;
+  margin-right: 10px;
+  color: #61a854;
+  position: relative;
+  top: 4px;
 `

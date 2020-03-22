@@ -6,7 +6,7 @@ import Search from '../components/Search'
 export default function HomePage({ handleChange, list }) {
   return (
     <Main>
-      <SubHeader>Wo möchtest Du einkaufen?</SubHeader>
+      <h1>Supermärkte in deiner Nähe</h1>
       <Search handleChange={handleChange} />
       <List list={list} />
     </Main>
@@ -16,5 +16,3 @@ export default function HomePage({ handleChange, list }) {
 const Main = styled.main`
   overflow-y: scroll;
 `
-
-const SubHeader = styled.h2``

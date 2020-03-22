@@ -21,20 +21,12 @@ export default createGlobalStyle`
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.22;
-    color: #f77d33;
-    margin-top:0;
-  }
-
-  h2 {
-    font-size: 23px;
-    font-weight: bold;
-    line-height: 1.22;
-    text-align: center;
     color: #494947;
-    margin-top: 0
+    margin-top:0;
+    margin-bottom: 24px;
   }
 
   main {
