@@ -5,8 +5,8 @@ A project for WirVsVirus
 ## Installation
 
 - Clone this repo
-- `$ pip3 install pandas geopy requests`
-- `$ pip3 install --upgrade git+https://github.com/m-wrzr/populartimes`
+- `$ sudo pip3 install pandas geopy requests`
+- `$ sudo pip3 install --upgrade git+https://github.com/m-wrzr/populartimes`
 - create `server/api_key.json`
 
   ```
