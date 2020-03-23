@@ -9,6 +9,11 @@ node_modules
 coverage
 cypress
 
+# python stuff
+api_key.json
+df1.csv
+df2.csv
+
 # production
 build
 
