@@ -7,7 +7,7 @@
     "@babel/core": "7.7.4",
     "@babel/node": "7.7.4",
     "@babel/preset-env": "7.7.6",
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "cors": "2.8.5",
     "env-cmd": "10.0.1",
     "express": "4.17.1",
